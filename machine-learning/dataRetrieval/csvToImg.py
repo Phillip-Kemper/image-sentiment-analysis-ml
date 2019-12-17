@@ -40,6 +40,7 @@ def main():
         if not os.path.exists(label_path):
             os.system('mkdir {}'.format(label_path))
         cv2.imwrite(img_path, img)
-        print ('Write %s',img_path)
+        print('Write to {}'.format(img_path))
+
 
 main()
