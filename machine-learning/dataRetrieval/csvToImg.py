@@ -20,8 +20,7 @@ def main():
 
     label_names = ['Happy', 'Sad', 'Neutral']
     #data = pd.read_csv('fer2013.csv', delimiter=',')
-    data = np.genfromtxt('./sources/fer2013/fer2013.csv',delimiter=',',dtype=None,encoding='utf8')
-    print("te")
+    data = np.genfromtxt('./sources/fer2013_adapt_train.csv',delimiter=',',dtype=None,encoding='utf8')
     print(data)
 
     labels = data[1:,0].astype(np.int32)

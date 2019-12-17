@@ -26,8 +26,8 @@ train_df, eval_df = load_fer()
 #with open("sources/fer2013_3_emotions", "w") as fp:
 #    fp.write(train_df)
 
-train_df.to_csv("sources/fer2013_adapt_train.csv")
-eval_df.to_csv("sources/fer2013_adapt_eval.csv")
+train_df.to_csv("sources/fer2013_adapt_train.csv", index=False)
+eval_df.to_csv("sources/fer2013_adapt_eval.csv", index=False)
 
 
 
