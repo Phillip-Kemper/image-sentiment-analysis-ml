@@ -3,8 +3,6 @@ import pandas as pd
 from scipy.io import loadmat
 import matplotlib.pyplot as plt
 import scipy.optimize as opt
-import checkNNGradients
-import displayData
 
 
 # deprecated
