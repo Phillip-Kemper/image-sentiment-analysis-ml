@@ -11,7 +11,6 @@ def main():
     trainingData, evalData = getData.load_fer(CSV_FILE)
     print(trainingData)
     y = trainingData["emotion"]
-
     # TODO @PK: write pixel data to X matrix
     X = trainingData["pixels"]
     return X
