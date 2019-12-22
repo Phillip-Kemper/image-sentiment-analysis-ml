@@ -3,10 +3,11 @@
   height: 100%;
   width: 100%;
 
-  .startButton {
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+}
+
+.ready {
+  color: green;
+}
+.notReady {
+  color: red;
 }

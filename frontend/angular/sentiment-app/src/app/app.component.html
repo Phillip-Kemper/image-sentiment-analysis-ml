@@ -1,8 +1,14 @@
 <div class="main">
-  <div fxLayout="center center" class="startButton">
-<!--      <button mat-raised-button color="primary">1. Step: Upload Image</button>  -->
-      <input type="file" accept="image/*" id="file-input">
+  <div class="startButton">
+    <div >
+      <input style="display:none" type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)">
+      <button id="upload" style="display: none" type="button" (click)="onUpload()">Upload File</button>
+      <button onclick="cameraInput.click()" mat-raised-button >1. Step Select Image</button>
+    </div>
 
+    <div >
+      <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
+    </div>
 
   </div>
 
