@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule} from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 
@@ -24,6 +26,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FlexLayoutModule,
     MatIconModule,
     MatTooltipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
