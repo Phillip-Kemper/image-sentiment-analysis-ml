@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from .config import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -126,8 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AWS_ACCESS_KEY_ID = 'aws-access-key-id'
-AWS_SECRET_ACCESS_KEY = 'secret-access-key'
+AWS_ACCESS_KEY_ID = config.accessKeyId
+AWS_SECRET_ACCESS_KEY = config.secretAccessKey
 AWS_STORAGE_BUCKET_NAME = 'imagesentimentanalysis'
 AWS_S3_REGION_NAME = 'eu-central-1'
 AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
