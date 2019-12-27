@@ -32,12 +32,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'imageUpload.apps.ImageuploadConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    's3direct'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +78,12 @@ WSGI_APPLICATION = 'sentimentAPI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sentimentanalysisdb',
+        'USER': 'root',
+        'PASSWORD': 'admin1234',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -119,3 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AWS_ACCESS_KEY_ID = 'aws-access-key-id'
+AWS_SECRET_ACCESS_KEY = 'secret-access-key'
+AWS_STORAGE_BUCKET_NAME = 'imagesentimentanalysis'
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+
+S3DIRECT_DESTINATIONS = {
+    'primary_destination': {
+        'key': 'uploads/',
+        'allowed': ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'],
+    },
+}
