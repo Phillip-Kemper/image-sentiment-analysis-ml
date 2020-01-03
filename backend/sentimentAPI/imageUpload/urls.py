@@ -7,8 +7,8 @@ router = routers.DefaultRouter()
 router.register(r'images', views.ImageUploadViewSet)
 
 urlpatterns = [
-    path('snippets/', views.snippet_list),
-    path('snippets/<int:pk>/', views.snippet_detail),
+    path('snippets/', views.image_list),
+    path('snippets/<int:pk>/', views.image_detail),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
