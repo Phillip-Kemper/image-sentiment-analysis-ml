@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('upload/', include('imageUpload.urls')),
     path('admin/', admin.site.urls),
+    path('s3direct/', include('s3direct.urls')),
 ]

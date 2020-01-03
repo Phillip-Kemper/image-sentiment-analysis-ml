@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    's3direct'
+    's3direct',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,8 @@ AWS_ACCESS_KEY_ID = config.accessKeyId
 AWS_SECRET_ACCESS_KEY = config.secretAccessKey
 AWS_STORAGE_BUCKET_NAME = 'imagesentimentanalysis'
 AWS_S3_REGION_NAME = 'eu-central-1'
-AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+AWS_S3_ENDPOINT_URL = 'https://s3-eu-central-1.amazonaws.com'
+S3DIRECT_ENDPOINT = 'eu-central-1' # http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
 
 S3DIRECT_DESTINATIONS = {
     'primary_destination': {
