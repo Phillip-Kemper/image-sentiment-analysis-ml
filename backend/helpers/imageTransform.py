@@ -24,10 +24,13 @@ def transformDimensions(data):
 
 
 def transformColorAndDimension(data):
-    originalImage = cv2.imread('/Users/phillip/Desktop/happy.jpeg')
-    gray = transformBlackWhite(originalImage)
-    resized = transformDimensions(gray)
-    cv2.imshow("Resized image", resized)
+    #originalImage = cv2.imread('/Users/phillip/Desktop/happy.jpeg')
+    originalImage = data
+    # at this point in time, there does not to appear a quality difference in first resizing and then graying
+    # to be investigated further
+    resized = transformDimensions(originalImage)
+    gray = transformBlackWhite(resized)
+    cv2.imshow("Resized image", gray)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
