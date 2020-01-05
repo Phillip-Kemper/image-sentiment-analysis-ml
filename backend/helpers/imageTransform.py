@@ -23,5 +23,13 @@ def transformDimensions(data):
     return resized
 
 
+def transformColorAndDimension(data):
+    originalImage = cv2.imread('/Users/phillip/Desktop/happy.jpeg')
+    gray = transformBlackWhite(originalImage)
+    resized = transformDimensions(gray)
+    cv2.imshow("Resized image", resized)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-print(transformDimensions(''))
+
+transformColorAndDimension('')
