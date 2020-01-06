@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     's3direct',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'sentimentAPI.urls'
@@ -141,3 +143,6 @@ S3DIRECT_DESTINATIONS = {
         'allowed': ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'],
     },
 }
+
+# enable cors to access api from angular
+CORS_ORIGIN_ALLOW_ALL =  True

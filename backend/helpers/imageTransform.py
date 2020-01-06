@@ -35,4 +35,4 @@ def transformColorAndDimension(data):
     cv2.destroyAllWindows()
 
 
-transformColorAndDimension('')
+#transformColorAndDimension('')
