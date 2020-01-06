@@ -30,9 +30,10 @@ def transformColorAndDimension(data):
     # to be investigated further
     resized = transformDimensions(originalImage)
     gray = transformBlackWhite(resized)
-    cv2.imshow("Resized image", gray)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.imshow("Resized image", gray)
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
+    return gray
 
 
 #transformColorAndDimension('')

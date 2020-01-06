@@ -8,5 +8,8 @@ class ImageUploadSerializer(serializers.ModelSerializer):
         model = ImageUpload
         fields = '__all__'
 
+    def create(self, validated_data):
+        return ImageUpload.objects.create(**validated_data)
+
 
 

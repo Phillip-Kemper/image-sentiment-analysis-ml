@@ -37,6 +37,9 @@ class ImageUploadView(APIView):
       }
       file_serializer = ImageUploadSerializer(data=request.data,context=serializer_context)
 
+
+#      print(request.data.dict()['file'])
+      print(request.data)
       if file_serializer.is_valid():
           file_serializer.save()
           return Response(file_serializer.data, status=status.HTTP_201_CREATED)
