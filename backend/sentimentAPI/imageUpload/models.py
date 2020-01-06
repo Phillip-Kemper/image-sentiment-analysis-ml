@@ -6,10 +6,11 @@ from s3direct.fields import S3DirectField
 
 
 class ImageUpload(models.Model):
-    name = models.CharField(max_length=255, blank=False, null=False, default='pic')
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = S3DirectField(dest='primary_destination', blank=True)
+    file = models.FileField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
 
 
 

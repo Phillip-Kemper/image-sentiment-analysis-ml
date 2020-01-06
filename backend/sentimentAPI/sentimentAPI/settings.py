@@ -146,3 +146,6 @@ S3DIRECT_DESTINATIONS = {
 
 # enable cors to access api from angular
 CORS_ORIGIN_ALLOW_ALL =  True
+
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
