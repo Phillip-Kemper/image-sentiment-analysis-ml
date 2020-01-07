@@ -8,6 +8,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
 
@@ -26,7 +27,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FlexLayoutModule,
     MatIconModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ImageUploadService} from './services/image-upload.service';
 import { Observable, of } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private previewUrl: string | ArrayBuffer;
 
   constructor(private imageService: ImageUploadService){
 
@@ -18,6 +19,7 @@ export class AppComponent {
   secondScreen = false;
   selectedFile = null;
   imageUpload = null;
+
 
   onFileSelected(event)
   {
@@ -31,6 +33,20 @@ export class AppComponent {
   onUpload()
   {
     console.log(this.selectedFile); // You can use FormData upload to backend server
+
+    let image = this.selectedFile
+    const size = image.size;
+    let width;
+    let height;
+
+        var reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+    }
+
+
+
 
     this.imageUpload = this.imageService
       .uploadImage(this.selectedFile)
