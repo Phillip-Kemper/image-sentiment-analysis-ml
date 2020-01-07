@@ -23,9 +23,9 @@ from rest_framework.response import Response
 #def upload(self):
 #    return HttpResponse("Hello, world. You're at the polls index. 2")
 #
-#class ImageUploadViewSet(viewsets.ModelViewSet):
-#    queryset = ImageUpload.objects.all().order_by('name')
-#    serializer_class = ImageUploadSerializer
+class ImageUploadViewSet(viewsets.ModelViewSet):
+    queryset = ImageUpload.objects.all().order_by('name')
+    serializer_class = ImageUploadSerializer
 
 class ImageUploadView(APIView):
     parser_class = (FileUploadParser,)
