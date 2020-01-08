@@ -10,8 +10,12 @@
       <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
     </div>
 
-    <div class="image-preview mb-3" *ngIf="previewUrl">
-      <img [src]="previewUrl" height="300" />
+    <div  class="image-preview mb-3"  [class.hidden]="loadedImg">
+      <img id="myimg" [src]="loadedImg" height="300" />
+    </div>
+
+        <div class="image-preview mb-3" *ngIf="previewUrl">
+      <img  [src]="previewUrl" height="300" />
     </div>
 </div>
 </div>
