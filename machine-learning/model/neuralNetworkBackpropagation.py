@@ -87,8 +87,6 @@ def gradient(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, l
     m = len(y)
 
     for i in range(X.shape[0]):
-        print(X.shape[0])
-        print(np.shape(initial_theta1))
         ones = np.ones(1)
         a1 = np.hstack((ones, X[i]))
         z2 = np.dot(a1,initial_theta1)

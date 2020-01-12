@@ -50,7 +50,6 @@ initialTheta2 = ml.randomTheta(num_hidden, num_labels)
 
 initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(initialTheta2, order='F'))
 
-print(np.shape(initialThetaVector))
 
 EPOCH_NUMBER = 40
 for i in range(EPOCH_NUMBER):
