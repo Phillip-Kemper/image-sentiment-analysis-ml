@@ -51,7 +51,7 @@ initialTheta2 = ml.randomTheta(num_hidden, num_labels)
 initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(initialTheta2, order='F'))
 
 
-EPOCH_NUMBER = 30
+EPOCH_NUMBER = 60
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
     print(i)

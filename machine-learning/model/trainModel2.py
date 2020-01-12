@@ -33,8 +33,6 @@ X = np.asarray(X)
 # print('test')
 # print(X.shape)
 
-X = X[:100, :]
-y = y[:100]
 
 
 def sigmoid(z):
@@ -73,7 +71,6 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     J = 0
     X = np.hstack((np.ones((m, 1)), X))
     y10 = np.zeros((m, num_labels))
-    print(np.shape(y10))
     y_exp = np.expand_dims(y, axis=1)
 
     a1 = sigmoid(X @ Theta1.T)
@@ -169,7 +166,7 @@ def gradientDescentnn(X, y, initial_nn_params, alpha, num_iters, Lambda, input_l
     return nn_paramsFinal, J_history
 
 
-EPOCH_NUMBER = 30
+EPOCH_NUMBER = 60
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
     print(i)
@@ -184,10 +181,11 @@ for i in range(EPOCH_NUMBER):
     with open("out_trainModel1.txt", "a") as myfile:
         myfile.write("Epoch Number:")
         myfile.write(str(i))
-        myfile.write(np.mean(pred == y.flatten()) * 100, "%")
+        temp = np.mean(pred == y.flatten()) * 100
+        myfile.write(str(temp))
 
         if i == EPOCH_NUMBER:
             myfile.write("END")
-            np.save('FinalModel1.npy', initial_nn_params)
+            np.save('FinalModel2.npy', initial_nn_params)
 
 
