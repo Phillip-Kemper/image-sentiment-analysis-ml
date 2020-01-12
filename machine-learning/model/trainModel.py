@@ -53,7 +53,8 @@ initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(init
 
 print(np.shape(initialThetaVector))
 
-for i in range(10):
+EPOCH_NUMBER = 40
+for i in range(EPOCH_NUMBER):
     thetaOpt = initialThetaVector
 
     thetaOpt = opt.fmin_cg(maxiter=500, f=ml.costFunction, x0=thetaOpt, fprime=ml.onlyGrad,
@@ -64,13 +65,15 @@ for i in range(10):
 
     pred = ml.predict(theta1, theta2, X, y)
     orig_stdout = sys.stdout
-    f = open('out.txt', 'w')
+    f = open('out_trainModel1.txt', 'w')
     sys.stdout = f
-
-    print(pred)
+    print("Epoch Number:")
+    print(i)
     print(np.mean(pred == y.flatten()) * 100, "%")
-    if(i==10):
+    if(i==EPOCH_NUMBER):
         print("END")
+        np.save('FinalModel1.npy',thetaOpt)
+
 
     sys.stdout = orig_stdout
     f.close()
