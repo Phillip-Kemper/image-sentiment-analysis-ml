@@ -172,7 +172,7 @@ def gradientDescentnn(X, y, initial_nn_params, alpha, num_iters, Lambda, input_l
 EPOCH_NUMBER = 40
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
-    print(EPOCH_NUMBER)
+    print(i)
 
     nnTheta, nnJ_history = gradientDescentnn(X, y, initial_nn_params, 0.8, 800, 1, input_layer_size, hidden_layer_size,
                                              num_labels)

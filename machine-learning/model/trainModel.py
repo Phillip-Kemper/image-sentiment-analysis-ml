@@ -54,7 +54,7 @@ initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(init
 EPOCH_NUMBER = 40
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
-    print(EPOCH_NUMBER)
+    print(i)
     thetaOpt = initialThetaVector
 
     thetaOpt = opt.fmin_cg(maxiter=500, f=ml.costFunction, x0=thetaOpt, fprime=ml.onlyGrad,
