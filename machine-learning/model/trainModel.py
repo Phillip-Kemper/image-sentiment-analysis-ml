@@ -69,6 +69,8 @@ for i in range(10):
 
     print(pred)
     print(np.mean(pred == y.flatten()) * 100, "%")
+    if(i==10):
+        print("END")
 
     sys.stdout = orig_stdout
     f.close()
@@ -76,4 +78,8 @@ for i in range(10):
 
 
 
-#print(res)
+
+
+
+
+
