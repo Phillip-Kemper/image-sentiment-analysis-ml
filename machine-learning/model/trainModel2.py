@@ -177,16 +177,15 @@ for i in range(EPOCH_NUMBER):
     Theta2 = nnTheta[((input_layer_size + 1) * hidden_layer_size):].reshape(num_labels, hidden_layer_size + 1)
 
     pred = ml.predict(Theta1, Theta2, X, y)
-    orig_stdout = sys.stdout
-    f = open('out_trainModel2.txt', 'w')
-    sys.stdout = f
-    print("Epoch Number:")
-    print(i)
-    print(np.mean(pred == y.flatten()) * 100, "%")
-    if i == EPOCH_NUMBER:
-        print("END")
-        np.save('FinalModel2.npy', initial_nn_params)
 
-    sys.stdout = orig_stdout
-    f.close()
-    initial_nn_params = np.append(Theta1.flatten(), Theta2.flatten())
+    with open("out_trainModel1.txt", "a") as myfile:
+        myfile.write("appended text")
+        myfile.write("Epoch Number:")
+        myfile.write(str(i))
+        myfile.write(np.mean(pred == y.flatten()) * 100, "%")
+
+        if i == EPOCH_NUMBER:
+            myfile.write("END")
+            np.save('FinalModel1.npy', initial_nn_params)
+
+

@@ -63,15 +63,14 @@ for i in range(EPOCH_NUMBER):
     theta2 = np.reshape(thetaOpt[num_hidden * (num_input + 1):], (num_labels, num_hidden + 1), 'F')
 
     pred = ml.predict(theta1, theta2, X, y)
-    orig_stdout = sys.stdout
-    f = open('out_trainModel1.txt', 'w')
-    sys.stdout = f
-    print("Epoch Number:")
-    print(i)
-    print(np.mean(pred == y.flatten()) * 100, "%")
-    if i == EPOCH_NUMBER:
-        print("END")
-        np.save('FinalModel1.npy', thetaOpt)
+    with open("out_trainModel1.txt", "a") as myfile:
+        myfile.write("appended text")
+        myfile.write("Epoch Number:")
+        myfile.write(str(i))
+        myfile.write(np.mean(pred == y.flatten()) * 100, "%")
 
-    sys.stdout = orig_stdout
-    f.close()
+        if i == EPOCH_NUMBER:
+            myfile.write("END")
+            np.save('FinalModel1.npy', thetaOpt)
+
+
