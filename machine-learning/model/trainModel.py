@@ -57,7 +57,7 @@ for i in range(EPOCH_NUMBER):
     print(i)
     thetaOpt = initialThetaVector
 
-    thetaOpt = opt.fmin_cg(maxiter=500, f=ml.costFunction, x0=thetaOpt, fprime=ml.onlyGrad,
+    thetaOpt = opt.fmin_cg(maxiter=200, f=ml.costFunction, x0=thetaOpt, fprime=ml.onlyGrad,
                            args=(num_input, num_hidden, num_labels, X, y.flatten(), _lambda))
 
     theta1 = np.reshape(thetaOpt[:num_hidden * (num_input + 1)], (num_hidden, num_input + 1), 'F')
@@ -67,7 +67,9 @@ for i in range(EPOCH_NUMBER):
     with open("out_trainModel1.txt", "a") as myfile:
         myfile.write("Epoch Number:")
         myfile.write(str(i))
-        myfile.write(np.mean(pred == y.flatten()) * 100, "%")
+        temp = np.mean(pred == y.flatten()) * 100
+        myfile.write(str(temp))
+
 
         if i == EPOCH_NUMBER:
             myfile.write("END")
