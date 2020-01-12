@@ -178,11 +178,14 @@ for i in range(EPOCH_NUMBER):
 
     pred = ml.predict(Theta1, Theta2, X, y)
 
-    with open("out_trainModel1.txt", "a") as myfile:
-        myfile.write("Epoch Number:")
+    with open("out_trainModel2.txt", "a") as myfile:
+        myfile.write("Epoch Number: \n")
         myfile.write(str(i))
+        myfile.write("\n")
         temp = np.mean(pred == y.flatten()) * 100
+        myfile.write("\n")
         myfile.write(str(temp))
+        myfile.write("\n")
 
         if i == EPOCH_NUMBER:
             myfile.write("END")
