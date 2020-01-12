@@ -179,7 +179,6 @@ for i in range(EPOCH_NUMBER):
     pred = ml.predict(Theta1, Theta2, X, y)
 
     with open("out_trainModel1.txt", "a") as myfile:
-        myfile.write("appended text")
         myfile.write("Epoch Number:")
         myfile.write(str(i))
         myfile.write(np.mean(pred == y.flatten()) * 100, "%")
