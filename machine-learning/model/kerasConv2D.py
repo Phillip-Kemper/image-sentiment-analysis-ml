@@ -15,7 +15,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import pyplot as plt
 
-CSV_FILE = "assets/fer2013.csv"
+CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
 batch_size = 64
 img_width, img_height = 48, 48
 
@@ -26,7 +26,10 @@ model_path = 'model/emotion_model.h5'
 
 def _load_fer():
     # Load training and eval data
-    df = pd.read_csv(CSV_FILE, sep=',')
+    df = pd.read_csv(CSV_FILE, sep=',').query('emotion != 0 and emotion != 1 and emotion !=2 and emotion != 5')
+    df.emotion.replace(3, 0, inplace=True)
+    df.emotion.replace(4, 1, inplace=True)
+    df.emotion.replace(6, 2, inplace=True)
     train_df = df[df['Usage'] == 'Training']
     eval_df = df[df['Usage'] == 'PublicTest']
     return train_df, eval_df
