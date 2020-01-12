@@ -77,7 +77,6 @@ def randomTheta(L_in, L_out):
 
 
 def gradient(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda):
-    print("loading/training...")
     initial_theta1 = np.reshape(nn_params[:hidden_layer_size * (input_layer_size + 1)],
                                 (hidden_layer_size, input_layer_size + 1), 'F').T
     initial_theta2 = np.reshape(nn_params[hidden_layer_size * (input_layer_size + 1):],
