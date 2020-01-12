@@ -170,13 +170,15 @@ EPOCH_NUMBER = 60
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
     print(i)
+    nn_paramsFinal = initial_nn_params
 
-    nnTheta, nnJ_history = gradientDescentnn(X, y, initial_nn_params, 0.8, 800, 1, input_layer_size, hidden_layer_size,
+    nnTheta, nnJ_history = gradientDescentnn(X, y, nn_paramsFinal, 0.8, 800, 1, input_layer_size, hidden_layer_size,
                                              num_labels)
     Theta1 = nnTheta[:((input_layer_size + 1) * hidden_layer_size)].reshape(hidden_layer_size, input_layer_size + 1)
     Theta2 = nnTheta[((input_layer_size + 1) * hidden_layer_size):].reshape(num_labels, hidden_layer_size + 1)
 
     pred = ml.predict(Theta1, Theta2, X, y)
+    initial_nn_params = np.append(Theta1.flatten(), Theta2.flatten())
 
     with open("out_trainModel2.txt", "a") as myfile:
         myfile.write("Epoch Number: \n")

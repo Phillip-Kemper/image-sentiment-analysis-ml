@@ -63,6 +63,8 @@ for i in range(EPOCH_NUMBER):
     theta1 = np.reshape(thetaOpt[:num_hidden * (num_input + 1)], (num_hidden, num_input + 1), 'F')
     theta2 = np.reshape(thetaOpt[num_hidden * (num_input + 1):], (num_labels, num_hidden + 1), 'F')
 
+    initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(initialTheta2, order='F'))
+
     pred = ml.predict(theta1, theta2, X, y)
     with open("out_trainModel1.txt", "a") as myfile:
         myfile.write("Epoch Number:")
