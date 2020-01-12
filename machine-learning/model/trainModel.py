@@ -7,16 +7,15 @@ import dataRetrieval.dataRetrieval as getData
 import model.neuralNetworkBackpropagation as ml
 import sys
 
-
 CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
+
 
 def main():
     trainingData, evalData = getData.load_fer(CSV_FILE)
     # print(trainingData)
     y = trainingData["emotion"].values
     # getting labels for training
-    #y = pd.get_dummies(trainingData['emotion']).values
-
+    # y = pd.get_dummies(trainingData['emotion']).values
 
     width, height = 48, 48
     datapoints = trainingData['pixels'].tolist()
@@ -31,10 +30,10 @@ def main():
     # X = np.expand_dims(X, axis=0)
     # X = np.expand_dims(X, -1)
 
-    #print('X_TRAINING')
-    #print(X)
-    #print('test')
-    #print(X.shape)
+    # print('X_TRAINING')
+    # print(X)
+    # print('test')
+    # print(X.shape)
 
     return X, y
 
@@ -70,19 +69,9 @@ for i in range(EPOCH_NUMBER):
     print("Epoch Number:")
     print(i)
     print(np.mean(pred == y.flatten()) * 100, "%")
-    if(i==EPOCH_NUMBER):
+    if i == EPOCH_NUMBER:
         print("END")
-        np.save('FinalModel1.npy',thetaOpt)
-
+        np.save('FinalModel1.npy', thetaOpt)
 
     sys.stdout = orig_stdout
     f.close()
-
-
-
-
-
-
-
-
-

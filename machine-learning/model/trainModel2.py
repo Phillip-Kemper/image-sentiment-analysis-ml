@@ -9,7 +9,6 @@ import dataRetrieval.dataRetrieval as getData
 
 CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
 
-
 trainingData, evalData = getData.load_fer(CSV_FILE)
 # print(trainingData)
 y = trainingData["emotion"].values
@@ -34,9 +33,8 @@ X = np.asarray(X)
 # print('test')
 # print(X.shape)
 
-X = X[:100,:]
+X = X[:100, :]
 y = y[:100]
-
 
 
 def sigmoid(z):
@@ -45,6 +43,7 @@ def sigmoid(z):
     """
 
     return 1 / (1 + np.exp(-z))
+
 
 def predict(Theta1, Theta2, X):
     """
@@ -76,7 +75,6 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     y10 = np.zeros((m, num_labels))
     print(np.shape(y10))
     y_exp = np.expand_dims(y, axis=1)
-
 
     a1 = sigmoid(X @ Theta1.T)
     a1 = np.hstack((np.ones((m, 1)), a1))  # hidden layer
@@ -122,7 +120,7 @@ def sigmoidGradient(z):
     return sigmoid * (1 - sigmoid)
 
 
-input_layer_size  = 2304
+input_layer_size = 2304
 hidden_layer_size = 25
 num_labels = 3
 
@@ -138,10 +136,10 @@ def randInitializeWeights(L_in, L_out):
 
     return W
 
+
 initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
 initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
-initial_nn_params = np.append(initial_Theta1.flatten(),initial_Theta2.flatten())
-
+initial_nn_params = np.append(initial_Theta1.flatten(), initial_Theta2.flatten())
 
 
 def gradientDescentnn(X, y, initial_nn_params, alpha, num_iters, Lambda, input_layer_size, hidden_layer_size,
@@ -173,9 +171,10 @@ def gradientDescentnn(X, y, initial_nn_params, alpha, num_iters, Lambda, input_l
 
 EPOCH_NUMBER = 40
 for i in range(EPOCH_NUMBER):
-    nnTheta, nnJ_history = gradientDescentnn(X,y,initial_nn_params,0.8,800,1,input_layer_size, hidden_layer_size, num_labels)
-    Theta1 = nnTheta[:((input_layer_size+1) * hidden_layer_size)].reshape(hidden_layer_size,input_layer_size+1)
-    Theta2 = nnTheta[((input_layer_size +1)* hidden_layer_size ):].reshape(num_labels,hidden_layer_size+1)
+    nnTheta, nnJ_history = gradientDescentnn(X, y, initial_nn_params, 0.8, 800, 1, input_layer_size, hidden_layer_size,
+                                             num_labels)
+    Theta1 = nnTheta[:((input_layer_size + 1) * hidden_layer_size)].reshape(hidden_layer_size, input_layer_size + 1)
+    Theta2 = nnTheta[((input_layer_size + 1) * hidden_layer_size):].reshape(num_labels, hidden_layer_size + 1)
 
     pred = ml.predict(Theta1, Theta2, X, y)
     orig_stdout = sys.stdout
@@ -184,14 +183,10 @@ for i in range(EPOCH_NUMBER):
     print("Epoch Number:")
     print(i)
     print(np.mean(pred == y.flatten()) * 100, "%")
-    if(i==EPOCH_NUMBER):
+    if i == EPOCH_NUMBER:
         print("END")
-        np.save('FinalModel2.npy',initial_nn_params)
+        np.save('FinalModel2.npy', initial_nn_params)
 
     sys.stdout = orig_stdout
     f.close()
     initial_nn_params = np.append(Theta1.flatten(), Theta2.flatten())
-
-
-
-
