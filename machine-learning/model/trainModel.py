@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import scipy.optimize as opt
 import dataRetrieval.dataRetrieval as getData
 import model.neuralNetworkBackpropagation as ml
+import sys
+
 
 CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
 
@@ -51,15 +53,26 @@ initialThetaVector = np.append(np.ravel(initialTheta1, order='F'), np.ravel(init
 
 print(np.shape(initialThetaVector))
 
-thetaOpt = opt.fmin_cg(maxiter=70, f=ml.costFunction, x0=initialThetaVector, fprime=ml.onlyGrad,
-                       args=(num_input, num_hidden, num_labels, X, y.flatten(), _lambda))
+for i in range(10):
+    thetaOpt = initialThetaVector
 
-theta1 = np.reshape(thetaOpt[:num_hidden * (num_input + 1)], (num_hidden, num_input + 1), 'F')
-theta2 = np.reshape(thetaOpt[num_hidden * (num_input + 1):], (num_labels, num_hidden + 1), 'F')
+    thetaOpt = opt.fmin_cg(maxiter=500, f=ml.costFunction, x0=thetaOpt, fprime=ml.onlyGrad,
+                           args=(num_input, num_hidden, num_labels, X, y.flatten(), _lambda))
 
-pred = ml.predict(theta1, theta2, X, y)
-print(pred)
-print(np.mean(pred == y.flatten()) * 100, "%")
+    theta1 = np.reshape(thetaOpt[:num_hidden * (num_input + 1)], (num_hidden, num_input + 1), 'F')
+    theta2 = np.reshape(thetaOpt[num_hidden * (num_input + 1):], (num_labels, num_hidden + 1), 'F')
+
+    pred = ml.predict(theta1, theta2, X, y)
+    orig_stdout = sys.stdout
+    f = open('out.txt', 'w')
+    sys.stdout = f
+
+    print(pred)
+    print(np.mean(pred == y.flatten()) * 100, "%")
+
+    sys.stdout = orig_stdout
+    f.close()
+
 
 
 
