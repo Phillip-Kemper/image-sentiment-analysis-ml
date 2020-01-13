@@ -166,7 +166,7 @@ def gradientDescentnn(X, y, initial_nn_params, alpha, num_iters, Lambda, input_l
     return nn_paramsFinal, J_history
 
 
-EPOCH_NUMBER = 60
+EPOCH_NUMBER = 20
 for i in range(EPOCH_NUMBER):
     print('currently at epoch')
     print(i)
