@@ -10,38 +10,26 @@ import sys
 CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
 
 
-def main():
-    trainingData, evalData = getData.load_fer(CSV_FILE)
-    # print(trainingData)
-    y = trainingData["emotion"].values
-    # getting labels for training
-    # y = pd.get_dummies(trainingData['emotion']).values
-
-    width, height = 48, 48
-    datapoints = trainingData['pixels'].tolist()
-
-    # getting features for training
-    X = []
-    for xseq in datapoints:
-        xx = [int(xp) for xp in xseq.split(' ')]
-        X.append(xx)
-
-    X = np.asarray(X)
-    # X = np.expand_dims(X, axis=0)
-    # X = np.expand_dims(X, -1)
-
-    # print('X_TRAINING')
-    # print(X)
-    # print('test')
-    # print(X.shape)
-
-    return X, y
+trainingData, evalData = getData.load_fer(CSV_FILE)
+# print(trainingData)
+y = trainingData["emotion"].values
+print(len(y))
+# getting labels for training
+# y = pd.get_dummies(trainingData['emotion']).values
+width, height = 48, 48
+datapoints = trainingData['pixels'].tolist()
+# getting features for training
+X = []
+for xseq in datapoints:
+    xx = [int(xp) for xp in xseq.split(' ')]
+    X.append(xx)
+X = np.asarray(X)
 
 
-X, y = main()
 num_labels = 3
 num_input = 2304
-num_hidden = 25
+num_hidden = 1539          # first tried 25 neurons in hidden layer, now applying rule of thumb
+                          # The number of hidden neurons should be 2/3 the size of the input layer, plus the size of the output layer.
 _lambda = 1
 epsilon = np.math.pow(10, -4)
 
