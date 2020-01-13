@@ -42,8 +42,5 @@ for filename in os.listdir(filepath):
     img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)
     print(np.argmax(prediction))
-# 0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral
 # 0=Angry, 1=Happy, 2=Sad, 3=Neutral
 
-# EMOTIONS IN PIC FOLDER:
-# 1=NEUTRAL, 2=HAPPY, 3=HAPPY, 4=HAPPY, 5=NEUTRAL, 6=HAPPY, 7=HAPPY, 8=HAPPY, 9=SAD, 10=NEUTRAL
