@@ -21,7 +21,7 @@ img_width, img_height = 48, 48
 
 # 0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral
 num_classes = 7
-model_path = 'emotion_model.h5'
+# model_path = '../model/emotion_model.h5'
 
 
 def _load_fer():
@@ -113,4 +113,4 @@ model.fit_generator(train_generator,
                     validation_data=valid_generator,
                     validation_steps=predict_size_valid)
 
-model.save(model_path)
+model.save("model.h5")
