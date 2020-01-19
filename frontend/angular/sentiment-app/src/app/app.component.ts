@@ -23,6 +23,7 @@ export class AppComponent {
   imageUpload = null;
   readyToAnalyze = false;
   form: FormGroup;
+  id = null
 
 
   ngOnInit() {
@@ -60,9 +61,10 @@ export class AppComponent {
     this.imageUpload = this.imageService
       .uploadImage(formData)
       .subscribe(res => {
-        console.log("uploading");
         console.log(res);
-        this.readyToAnalyze = true;
+        this.id = res['id'];
+
+        console.log(this.id);
       });
     this.secondScreen = true;
 
