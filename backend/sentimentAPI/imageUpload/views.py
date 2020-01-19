@@ -46,7 +46,6 @@ class ImageUploadView(APIView):
 #    serializer_class = ImageUploadSerializer
 #
 #
-#class ImageUploadDetail(generics.RetrieveUpdateDestroyAPIView):
-#    queryset = ImageUpload.objects.all()
-#    serializer_class = ImageUploadSerializer
-#
+class ImageUploadDetail(generics.RetrieveUpdateDestroyAPIView):
+      queryset = ImageUpload.objects.all()
+      serializer_class = ImageUploadSerializer

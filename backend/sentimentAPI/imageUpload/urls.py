@@ -10,7 +10,7 @@ router.register(r'images', views.ImageUploadViewSet)
 urlpatterns = [
 #    path('images/', views.ImageUploadList.as_view()),
 #    path('', ImageUploadView.as_view())
- #   path('images/<int:pk>/', views.ImageUploadDetail.as_view()),
+     path('get/<pk>/', views.ImageUploadDetail.as_view()),
      path('', include(router.urls)),
 #    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
