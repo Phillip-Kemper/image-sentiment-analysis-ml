@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import pyplot as plt
+from sklearn.metrics import classification_report, confusion_matrix
 
 CSV_FILE = "../dataRetrieval/sources/fer2013.csv"
 batch_size = 64
@@ -21,6 +22,8 @@ img_width, img_height = 48, 48
 
 # 0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral
 num_classes = 7
+
+
 # model_path = '../model/emotion_model.h5'
 
 
@@ -53,6 +56,7 @@ def _preprocess_fer(df,
 
 # Load fer data
 train_df, eval_df = _load_fer()
+num_of_test_samples = eval_df.size
 
 # preprocess fer data
 x_train, y_train = _preprocess_fer(train_df)
@@ -107,10 +111,97 @@ model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adam(lr=0.001), metrics=['accuracy'])
 model.summary()
 
-model.fit_generator(train_generator,
+history = model.fit_generator(train_generator,
                     steps_per_epoch=predict_size_train * 3,
                     epochs=200,
                     validation_data=valid_generator,
                     validation_steps=predict_size_valid)
 
-model.save("model.h5")
+model.save("3emotions_model.h5")
+
+
+import pandas as pd
+from sklearn.metrics import confusion_matrix
+
+y_pred = model.predict(x_valid)
+
+
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+
+    import itertools
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+
+    plt.xticks(tick_marks, classes, rotation=45, ha='right', fontsize=14)
+    plt.yticks(tick_marks, classes, rotation=45, ha='right', fontsize=14)
+
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+
+    # Plot
+    plt.tight_layout()
+    plt.ylim(-0.5, 2.5)
+    plt.savefig('3emotions.png')
+    plt.show()
+
+
+cm = confusion_matrix(y_true=np.argmax(y_valid, axis=1),
+                      y_pred=np.argmax(y_pred, axis=1))
+np.set_printoptions(precision=2)
+
+cm_labels = ['happy', 'sad', 'neutral']
+
+plot_confusion_matrix(cm, cm_labels, title='Confusion Matrix')
+
+
+
+
+
+
+
+def print_model_evaluation(history):
+    # summarize history for accuracy
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    fig = plt.gcf()
+    fig.savefig('3emotions_acc.png')
+    plt.show()
+    # summarize history for loss
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    fig = plt.gcf()
+    fig.savefig('3emotions_loss.png')
+    plt.show()
+
+print_model_evaluation(history)
