@@ -14,8 +14,8 @@
       <img id="myimg"  [src]="loadedImg" height="300" />
     </div>
 
-    <div *ngIf="readyToAnalyze">
-      <button mat-raised-button  [disabled]="!this.selectedFile" >3. Analyze Now</button>
+    <div *ngIf="id">
+      <button mat-raised-button (click)="analyze()"  [disabled]="!this.selectedFile" >3. Analyze Now</button>
     </div>
 
 </div>

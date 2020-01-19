@@ -70,6 +70,16 @@ export class AppComponent {
 
   }
 
+  analyze(){
+    this.imageService
+      .getImage(this.id)
+      .subscribe(res => {
+        console.log('analysing')
+        console.log(res);
+      });
+
+  }
+
 //  grayscale(image, bPlaceImage)
 //{
 //  image = image.loadedImg
