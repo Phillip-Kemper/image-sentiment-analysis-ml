@@ -16,15 +16,9 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-#def index(self):
-#    return HttpResponse("Hello, world. You're at the polls index.")
-#def add(self):
-#    return HttpResponse("Hello, world. You're at the polls index.")
-#def upload(self):
-#    return HttpResponse("Hello, world. You're at the polls index. 2")
-#
+
 class ImageUploadViewSet(viewsets.ModelViewSet):
-    queryset = ImageUpload.objects.all().order_by('name')
+    queryset = ImageUpload.objects.all()
     serializer_class = ImageUploadSerializer
 
 class ImageUploadView(APIView):

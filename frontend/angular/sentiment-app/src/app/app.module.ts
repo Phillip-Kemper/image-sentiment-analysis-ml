@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'ng2-file-upload';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -28,7 +29,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatIconModule,
     MatTooltipModule,
     HttpClientModule,
-    FileUploadModule
+    FileUploadModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

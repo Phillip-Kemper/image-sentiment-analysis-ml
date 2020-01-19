@@ -12,7 +12,7 @@ from s3direct.fields import S3DirectField
 
 class ImageUpload(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = S3DirectField(dest='primary_destination', blank=True)
+    image = models.ImageField(blank=False, null=False)
 
 
 
