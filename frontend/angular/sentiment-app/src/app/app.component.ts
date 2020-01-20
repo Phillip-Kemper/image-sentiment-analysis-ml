@@ -47,14 +47,11 @@ export class AppComponent {
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_event) => {
       this.loadedImg = reader.result;
-      console.log(this.loadedImg);
     }
-    console.log(image);
 
   }
 
   onUpload() {
-    console.log(this.selectedFile); // You can use FormData upload to backend server
 
     const formData = new FormData();
     formData.append('image', this.form.get('image').value);
