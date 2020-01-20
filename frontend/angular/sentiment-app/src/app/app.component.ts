@@ -2,6 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ImageUploadService} from './services/image-upload.service';
 import {Observable, of} from 'rxjs';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import * as d3 from 'd3';
+import * as d3scale from 'd3-scale';
 
 
 @Component({
@@ -66,7 +68,6 @@ export class AppComponent {
         this.sentiment = res['sentiment'];
         this.probability = res['probability'];
         });
-    this.secondScreen = true;
 
   }
 

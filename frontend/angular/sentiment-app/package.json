@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "d3": "^5.15.0",
+    "d3-scale": "^3.2.1",
     "hammerjs": "^2.0.8",
     "ng2-file-upload": "^1.4.0",
     "p5": "^0.10.2",
