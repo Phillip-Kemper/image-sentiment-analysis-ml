@@ -27,6 +27,11 @@
     <h3 *ngIf="this.sentiment==2">sad</h3>
     <h3 *ngIf="this.sentiment==3">angry</h3>
 
+    <div *ngIf="this.sentiment!=null" id="container"></div> <!--d3 chart gets inserted in this div-->
+
+
+    <h1 *ngIf="this.error">An unexpected error occured. Maybe our server is not able to scale up to current demand</h1>
+
 
 
 
