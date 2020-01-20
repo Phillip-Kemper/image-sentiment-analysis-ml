@@ -14,6 +14,9 @@ import matplotlib.pyplot as plt
 from s3direct.fields import S3DirectField
 import keras.backend.tensorflow_backend as tb
 tb._SYMBOLIC_SCOPE.value = True
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+
 
 # Create your models here.
 
@@ -63,7 +66,7 @@ class ImageUpload(models.Model):
         print(prediction)
         sentiment = np.argmax(prediction)
         probability = prediction[0][sentiment]
-        return sentiment,probability
+        return sentiment, probability
 
 
 
