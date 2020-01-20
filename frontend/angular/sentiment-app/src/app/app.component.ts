@@ -2,6 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ImageUploadService} from './services/image-upload.service';
 import {Observable, of} from 'rxjs';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import * as d3 from 'd3';
+import * as d3scale from 'd3-scale';
 
 
 @Component({
@@ -10,8 +12,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private previewUrl: any;
   private loadedImg;
+  private sentiment: any;
+  private probability: any;
+  private error: boolean;
 
   constructor(private formBuilder: FormBuilder, private imageService: ImageUploadService) {
 
@@ -21,7 +25,6 @@ export class AppComponent {
   secondScreen = false;
   selectedFile = null;
   imageUpload = null;
-  readyToAnalyze = false;
   form: FormGroup;
   id = null
 
@@ -39,11 +42,6 @@ export class AppComponent {
       this.form.get('image').setValue(file);
     }
 
-  }
-
-  onUpload() {
-    console.log(this.selectedFile); // You can use FormData upload to backend server
-
     let image = this.selectedFile
 
     var reader = new FileReader();
@@ -55,6 +53,10 @@ export class AppComponent {
     }
     console.log(image);
 
+  }
+
+  onUpload() {
+    console.log(this.selectedFile); // You can use FormData upload to backend server
 
     const formData = new FormData();
     formData.append('image', this.form.get('image').value);
@@ -63,12 +65,13 @@ export class AppComponent {
       .subscribe(res => {
         console.log(res);
         this.id = res['id'];
-
-        console.log(this.id);
-      });
-    this.secondScreen = true;
+        this.sentiment = res['sentiment'];
+        this.probability = res['probability'];
+        });
 
   }
+
+
 
 //  grayscale(image, bPlaceImage)
 //{

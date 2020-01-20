@@ -7,12 +7,19 @@ import {catchError, map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ImageUploadService {
-  url = "http://127.0.0.1:8000/upload/images/"
+  url = "http://localhost:8080/upload"
   constructor(private http:HttpClient) { }
 
   uploadImage(img) {
-    return this.http.post(this.url, img)
+    var url = this.url.concat('/images/')
+    return this.http.post(url, img)
       .pipe(map(res => res));
 
+  }
+  getImage(id){
+       var url = this.url.concat('/get/' + id);
+
+       return this.http.get(url)
+      .pipe(map(res => res));
   }
 }

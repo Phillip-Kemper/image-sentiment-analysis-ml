@@ -6,17 +6,30 @@
       <button onclick="cameraInput.click()" mat-raised-button >1. Step Select Image</button>
     </div>
 
-    <div >
+
+
+    <div  class="image-preview mb-3"  *ngIf="selectedFile">
+      <img id="myimg"  [src]="this.loadedImg" width="360" />
+    </div>
+
+        <div >
       <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
     </div>
 
-    <div  class="image-preview mb-3"  *ngIf="loadedImg">
-      <img id="myimg"  [src]="loadedImg" height="300" />
-    </div>
+    <h2 *ngIf="this.sentiment!=null">Result: </h2>
+    <h1 *ngIf="this.sentiment==0">😶</h1>
+    <h1 *ngIf="this.sentiment==1">😁</h1>
+    <h1 *ngIf="this.sentiment==2">😔</h1>
+    <h1 *ngIf="this.sentiment==3">😡</h1>
 
-    <div *ngIf="readyToAnalyze">
-      <button mat-raised-button  [disabled]="!this.selectedFile" >3. Analyze Now</button>
-    </div>
+    <h3 *ngIf="this.sentiment==0">neutral</h3>
+    <h3 *ngIf="this.sentiment==1">happy</h3>
+    <h3 *ngIf="this.sentiment==2">sad</h3>
+    <h3 *ngIf="this.sentiment==3">angry</h3>
+
+    <h3 *ngIf="this.probability!=null">With a probability of {{this.probability}}</h3>
+
+    <h1 *ngIf="this.error">An unexpected error occurred. Maybe our server is not able to scale up to current demand</h1>
 
 </div>
 </div>

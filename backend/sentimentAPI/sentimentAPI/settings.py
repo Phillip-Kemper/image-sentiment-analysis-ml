@@ -26,7 +26,7 @@ SECRET_KEY = '&p!pi)-x0$0sc16bk3!2rijo@2!^p5y8_k7jm9cgxv#m13-b2p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -146,9 +146,38 @@ S3DIRECT_DESTINATIONS = {
 }
 
 # enable cors to access api from angular
-CORS_ORIGIN_ALLOW_ALL =  True
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+"http://127.0.0.1:4200",
+"http://localhost:4200",
+)
 
 
+CORS_ALLOW_CREDENTIALS=True
+
+
+CORS_ALLOW_METHODS = (
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',)
+
+
+CORS_ALLOW_HEADERS = (
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+'Access-Control-Allow-Origin',)
 
 MEDIA_URL =  '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
