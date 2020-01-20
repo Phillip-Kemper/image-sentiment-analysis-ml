@@ -27,12 +27,9 @@
     <h3 *ngIf="this.sentiment==2">sad</h3>
     <h3 *ngIf="this.sentiment==3">angry</h3>
 
+    <h3 *ngIf="this.probability!=null">With a probability of {{this.probability}}</h3>
 
-
-    <h1 *ngIf="this.error">An unexpected error occured. Maybe our server is not able to scale up to current demand</h1>
-
-
-
+    <h1 *ngIf="this.error">An unexpected error occurred. Maybe our server is not able to scale up to current demand</h1>
 
 </div>
 </div>
