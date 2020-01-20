@@ -10,10 +10,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private loadedImg;
-  private sentiment: any;
-  private probability: any;
-  private error: boolean;
+  loadedImg;
+  sentiment: any;
+  probability: any;
+  error: boolean;
 
   constructor(private formBuilder: FormBuilder, private imageService: ImageUploadService) {
 
