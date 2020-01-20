@@ -6,17 +6,16 @@
       <button onclick="cameraInput.click()" mat-raised-button >1. Step Select Image</button>
     </div>
 
-    <div >
+
+
+    <div  class="image-preview mb-3"  *ngIf="selectedFile">
+      <img id="myimg"  [src]="this.loadedImg" height="300" />
+    </div>
+
+        <div >
       <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
     </div>
 
-    <div  class="image-preview mb-3"  *ngIf="loadedImg">
-      <img id="myimg"  [src]="loadedImg" height="300" />
-    </div>
-
-    <div *ngIf="id">
-      <button mat-raised-button (click)="analyze()"  [disabled]="!this.selectedFile" >3. Analyze Now</button>
-    </div>
 
 </div>
 </div>

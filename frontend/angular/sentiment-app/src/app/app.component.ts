@@ -12,6 +12,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class AppComponent {
   private previewUrl: any;
   private loadedImg;
+  private sentiment: any;
+  private probability: any;
 
   constructor(private formBuilder: FormBuilder, private imageService: ImageUploadService) {
 
@@ -39,12 +41,7 @@ export class AppComponent {
       this.form.get('image').setValue(file);
     }
 
-  }
-
-  onUpload() {
-    console.log(this.selectedFile); // You can use FormData upload to backend server
-
-    let image = this.selectedFile
+        let image = this.selectedFile
 
     var reader = new FileReader();
 
@@ -55,6 +52,13 @@ export class AppComponent {
     }
     console.log(image);
 
+  }
+
+  onUpload() {
+    console.log(this.selectedFile); // You can use FormData upload to backend server
+
+
+
 
     const formData = new FormData();
     formData.append('image', this.form.get('image').value);
@@ -63,6 +67,8 @@ export class AppComponent {
       .subscribe(res => {
         console.log(res);
         this.id = res['id'];
+        this.sentiment = res['sentiment'];
+        this.probability = res['probability'];
 
         console.log(this.id);
       });
@@ -70,15 +76,7 @@ export class AppComponent {
 
   }
 
-  analyze(){
-    this.imageService
-      .getImage(this.id)
-      .subscribe(res => {
-        console.log('analysing')
-        console.log(res);
-      });
 
-  }
 
 //  grayscale(image, bPlaceImage)
 //{
