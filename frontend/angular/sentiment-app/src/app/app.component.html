@@ -9,12 +9,25 @@
 
 
     <div  class="image-preview mb-3"  *ngIf="selectedFile">
-      <img id="myimg"  [src]="this.loadedImg" height="300" />
+      <img id="myimg"  [src]="this.loadedImg" width="360" />
     </div>
 
         <div >
       <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
     </div>
+
+    <h2 *ngIf="this.sentiment!=null">Result: </h2>
+    <h1 *ngIf="this.sentiment==0">😶</h1>
+    <h1 *ngIf="this.sentiment==1">😁</h1>
+    <h1 *ngIf="this.sentiment==2">😔</h1>
+    <h1 *ngIf="this.sentiment==3">😡</h1>
+
+    <h3 *ngIf="this.sentiment==0">neutral</h3>
+    <h3 *ngIf="this.sentiment==1">happy</h3>
+    <h3 *ngIf="this.sentiment==2">sad</h3>
+    <h3 *ngIf="this.sentiment==3">angry</h3>
+
+
 
 
 </div>
