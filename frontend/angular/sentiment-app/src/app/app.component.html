@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="startButton">
+    <div >
+      <input style="display:none" type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)">
+      <button id="upload" style="display: none" type="button" (click)="onUpload()">Upload File</button>
+      <button onclick="cameraInput.click()" mat-raised-button >1. Step Select Image</button>
+    </div>
+
+
+
+    <div  class="image-preview mb-3"  *ngIf="selectedFile">
+      <img id="myimg"  [src]="this.loadedImg" width="360" />
+    </div>
+
+        <div >
+      <button mat-raised-button onclick="upload.click()" [disabled]="!this.selectedFile" [ngClass]="this.selectedFile==null ? 'notReady' : 'ready'" >2. Upload Image</button>
+    </div>
+
+    <h2 *ngIf="this.sentiment!=null">Result: </h2>
+    <h1 *ngIf="this.sentiment==3">😶</h1>
+    <h1 *ngIf="this.sentiment==1">😁</h1>
+    <h1 *ngIf="this.sentiment==2">😔</h1>
+    <h1 *ngIf="this.sentiment==0">😡</h1>
+
+    <h3 *ngIf="this.sentiment==3">neutral</h3>
+    <h3 *ngIf="this.sentiment==1">happy</h3>
+    <h3 *ngIf="this.sentiment==2">sad</h3>
+    <h3 *ngIf="this.sentiment==0">angry</h3>
+
+   <!-- <h3 *ngIf="this.probability!=null">With a probability of {{this.probability}}</h3>  -->
+
+    <h1 *ngIf="this.error">An unexpected error occurred. Maybe our server is not able to scale up to current demand</h1>
+
+</div>
+</div>
