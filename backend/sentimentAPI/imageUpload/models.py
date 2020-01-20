@@ -29,16 +29,17 @@ class ImageUpload(models.Model):
     probability = models.IntegerField(default=0, blank=False)
 
     def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
         sentiment, probability = self.predict(self)
         self.sentiment = sentiment
         self.probability = probability
-        super().save(*args, **kwargs)
 
 
 
     def predict(self,*args, **kwargs):
         tb._SYMBOLIC_SCOPE.value = True
-        model = load_model('model.h5')
+        model = load_model('fer2013_model_2.h5')
         model.summary()
         filepath = 'media/'
         filename = self.image.name.rsplit('/', 1)[-1]

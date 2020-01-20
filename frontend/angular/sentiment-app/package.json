@@ -29,8 +29,7 @@
     "ng2-file-upload": "^1.4.0",
     "p5": "^0.10.2",
     "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.21",
