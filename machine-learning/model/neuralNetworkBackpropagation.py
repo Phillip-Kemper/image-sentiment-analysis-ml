@@ -5,6 +5,12 @@ import matplotlib.pyplot as plt
 import scipy.optimize as opt
 
 
+
+def min_max_norm (x):
+    x_min = x.min();
+    return (x - x_min) / (x.max() - x_min)
+
+
 # deprecated
 def reverseY(yM, num_entradas, num_etiquetasM):
     rev = np.zeros((5000, 1))

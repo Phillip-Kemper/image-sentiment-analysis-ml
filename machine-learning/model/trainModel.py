@@ -26,6 +26,9 @@ for xseq in datapoints:
 X = np.asarray(X)
 
 
+X = np.array([ml.min_max_norm(x) for x in X.T]).T
+
+
 num_labels = 3
 num_input = 2304
 num_hidden = 1539          # first tried 25 neurons in hidden layer, now applying rule of thumb
