@@ -34,8 +34,14 @@ def reverseY(yM, num_entradas, num_etiquetasM):
     return rev
 
 
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+def sigmoid(signal):
+    #return 1 / (1 + np.exp(-x))
+    signal = np.clip( signal, -500, 500 )
+
+    # Calculate activation signal
+    signal = 1.0/( 1 + np.exp( -signal ))
+
+    return signal
 
 
 def gradientCheck(params_rm, num_entradas, num_ocultas, num_etiquetas, X, y, reg, epsilon):
