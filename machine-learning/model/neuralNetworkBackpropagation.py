@@ -73,7 +73,9 @@ def costFunction(nn_params, num_entradas, num_ocultas, num_etiquetas, X, y, reg)
 
     y = pd.get_dummies(y.flatten()).to_numpy()
 
-    temp = np.sum(np.multiply(y, np.log(h)) + np.multiply(1 - y, np.log(1 - h)))
+    eps = 0.0000000001
+
+    temp = np.sum(np.multiply(y, np.log(h+eps)) + np.multiply(1 - y, np.log(1 - h +eps)))
 
     firstS = np.sum(np.sum(np.power(theta1[:, 1:], 2), axis=1))
     secondS = np.sum(np.sum(np.power(theta2[:, 1:], 2), axis=1))
