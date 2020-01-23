@@ -16,7 +16,7 @@ export class ImageUploadService {
       var url = "https://kemperino.com/api/upload"
     } else if(os.equals("ios")){
       var url = "https://kemperino.com/api2/upload"
-    } else if(os.equals("ios")){
+    } else if(os.equals("android")){
       var url = "https://kemperino.com/api3/upload"
     }
     url = url.concat('/images/')
