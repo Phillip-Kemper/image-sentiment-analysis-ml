@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 # load model
-model = load_model('fer2013_model_2.h5')
+model = load_model('3emotions_model.h5')
 print('loaded_model')
 # summarize model.
 model.summary()
@@ -41,6 +41,7 @@ for filename in os.listdir(filepath):
     print(filename)
     img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)
+    print(prediction)
     print(np.argmax(prediction))
 # 0=Angry, 1=Happy, 2=Sad, 3=Neutral
 
