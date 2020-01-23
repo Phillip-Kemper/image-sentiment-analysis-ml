@@ -7,19 +7,31 @@ import {catchError, map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ImageUploadService {
-  url = "https://kemperino.com/api/upload"
   constructor(private http:HttpClient) { }
 
-  uploadImage(img) {
-    var url = this.url.concat('/images/')
+  uploadImage(img,os) {
+
+    console.log(os);
+    if(os.equals('desktop')) {
+      var url = "https://kemperino.com/api/upload"
+    } else if(os.equals("ios")){
+      var url = "https://kemperino.com/api2/upload"
+    } else if(os.equals("ios")){
+      var url = "https://kemperino.com/api3/upload"
+    }
+    url = url.concat('/images/')
     return this.http.post(url, img)
       .pipe(map(res => res));
 
   }
-  getImage(id){
-       var url = this.url.concat('/get/' + id);
 
-       return this.http.get(url)
+
+
+  getImage(id){
+    var url = "https://kemperino.com/api/upload"
+    url = url.concat('/get/' + id);
+
+    return this.http.get(url)
       .pipe(map(res => res));
   }
 }

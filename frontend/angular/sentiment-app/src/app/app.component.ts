@@ -71,7 +71,7 @@ export class AppComponent {
     const formData = new FormData();
     formData.append('image', this.form.get('image').value);
     this.imageUpload = this.imageService
-      .uploadImage(formData)
+      .uploadImage(formData,this.os)
       .subscribe(res => {
         console.log(res);
         this.selectedFile = null;
