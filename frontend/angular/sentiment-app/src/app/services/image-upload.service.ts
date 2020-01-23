@@ -12,11 +12,11 @@ export class ImageUploadService {
   uploadImage(img,os) {
 
     console.log(os);
-    if(os.equals('desktop')) {
+    if(os==1) {
       var url = "https://kemperino.com/api/upload"
-    } else if(os.equals("ios")){
+    } else if(os==2){
       var url = "https://kemperino.com/api2/upload"
-    } else if(os.equals("android")){
+    } else if(os==3){
       var url = "https://kemperino.com/api3/upload"
     }
     url = url.concat('/images/')

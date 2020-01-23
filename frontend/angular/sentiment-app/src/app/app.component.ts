@@ -35,11 +35,11 @@ export class AppComponent {
 
     const os = navigator.userAgent.toString()
     if (os.includes("Android")) {
-      this.os = "android"
+      this.os = 3
     } else if (os.includes("Ios")) {
-      this.os = "iphone"
+      this.os = 2
     } else {
-      this.os = "desktop"
+      this.os = 1
     }
     console.log(this.os);
   }
