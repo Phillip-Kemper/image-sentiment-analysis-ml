@@ -69,6 +69,7 @@ export class AppComponent {
       .uploadImage(formData)
       .subscribe(res => {
         console.log(res);
+        this.selectedFile=null;
         this.id = res['id'];
         this.sentiment = res['sentiment'];
         this.probability = res['probability'];
