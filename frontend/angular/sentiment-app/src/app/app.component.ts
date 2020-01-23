@@ -34,13 +34,14 @@ export class AppComponent {
     });
 
     const os = navigator.userAgent.toString()
-    if(os.includes("Android")){
+    if (os.includes("Android")) {
       this.os = "android"
-    } else if (os.includes("Ios")){
+    } else if (os.includes("Ios")) {
       this.os = "iphone"
     } else {
       this.os = "desktop"
     }
+    console.log(this.os);
   }
 
   onFileSelected(event) {
@@ -49,6 +50,10 @@ export class AppComponent {
       const file = event.target.files[0];
       this.form.get('image').setValue(file);
     }
+
+    this.id = null;
+    this.sentiment = null;
+    this.probability = null;
 
     let image = this.selectedFile
 
@@ -69,11 +74,11 @@ export class AppComponent {
       .uploadImage(formData)
       .subscribe(res => {
         console.log(res);
-        this.selectedFile=null;
+        this.selectedFile = null;
         this.id = res['id'];
         this.sentiment = res['sentiment'];
         this.probability = res['probability'];
-        });
+      });
 
   }
 

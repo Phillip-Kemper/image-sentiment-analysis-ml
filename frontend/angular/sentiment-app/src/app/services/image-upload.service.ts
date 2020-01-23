@@ -7,7 +7,7 @@ import {catchError, map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ImageUploadService {
-  url = "http://localhost:8080/upload"
+  url = "https://kemperino.com/api/upload"
   constructor(private http:HttpClient) { }
 
   uploadImage(img) {
