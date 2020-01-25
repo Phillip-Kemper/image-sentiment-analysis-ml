@@ -49,6 +49,11 @@ def sigmoid(signal):
 
     return signal
 
+def tanh(signal):
+    return np.tanh(signal)
+
+
+
 
 def gradientCheck(params_rm, num_entradas, num_ocultas, num_etiquetas, X, y, reg, epsilon):
     cost1Vector = params_rm + epsilon
