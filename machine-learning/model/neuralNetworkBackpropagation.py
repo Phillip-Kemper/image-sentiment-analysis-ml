@@ -53,7 +53,8 @@ def tanh(signal):
     return np.tanh(signal)
 
 
-
+def relu(signal):
+    return np.maximum(signal, 0)
 
 def gradientCheck(params_rm, num_entradas, num_ocultas, num_etiquetas, X, y, reg, epsilon):
     cost1Vector = params_rm + epsilon
