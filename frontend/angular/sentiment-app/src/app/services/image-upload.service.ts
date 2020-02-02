@@ -13,7 +13,7 @@ export class ImageUploadService {
 
     console.log(os);
     if(os==1) {
-      var url = "https://kemperino.com/api/upload"
+      var url = " http://127.0.0.1:8080/upload"
     } else if(os==2){
       var url = "https://kemperino.com/api2/upload"
     } else if(os==3){
